@@ -30,6 +30,7 @@ Configurations = {
     end
 
     makeSymbolicLink("#{Dir.pwd}/vim/.vimrc", "#{ENV["HOME"]}/.vimrc")
+    makeSymbolicLink("#{Dir.pwd}/vim/.gvimrc", "#{ENV["HOME"]}/.gvimrc")
     makeSymbolicLink("#{Dir.pwd}/vim/.vim_neobundle", "#{ENV["HOME"]}/.vim_neobundle")
   end,
   :zsh => Proc.new do
