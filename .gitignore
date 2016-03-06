@@ -1,0 +1,13 @@
+vim/.vim/
+setting.json
+*.o
+*.*.swp
+.*.*.swp
+.myscript/twitnotify
+.myscript/amv/amv
+.git
+.zshcomp
+.zshlocalenv
+.zshlocalfunc
+.dub
+dub.selections.json
