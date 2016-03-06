@@ -3,7 +3,7 @@ setting.json
 *.o
 *.*.swp
 .*.*.swp
-myscripts/.myscript/twitnotify
+twitnotify
 myscripts/.myscripts/amv
 .git
 .zshcomp
