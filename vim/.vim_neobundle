@@ -38,10 +38,10 @@ NeoBundle 'scrooloose/syntastic.git'
 
 if has('nvim')
   NeoBundleLazy 'Shougo/deoplete.nvim', {
-    \ "autoload": {"insert": 1}}
+    \ 'autoload': {'insert': 1}}
 else
   NeoBundleLazy 'Shougo/neocomplete.vim', {
-    \ "autoload": {"insert": 1}}
+    \ 'autoload': {'insert': 1}}
 endif
 
 NeoBundleLazy 'Shougo/vimshell', {
@@ -75,7 +75,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'troydm/easybuffer.vim'
 NeoBundle 'itchyny/lightline.vim'
-"NeoBundle 'powerline/powerline'
 
 NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
@@ -126,15 +125,13 @@ if neobundle#tap('jazzradio.vim')
       \ })
 endif
 
-"NeoBundle 'cohama/agit.vim'
+NeoBundle 'dag/vim2hs'
+NeoBundle 'morhetz/gruvbox'
 
-NeoBundle "dag/vim2hs"
-NeoBundle "morhetz/gruvbox"
-
-NeoBundle "tyru/open-browser.vim"
+NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle "toyamarinyon/vim-swift"
-NeoBundle "losingkeys/vim-niji"
+NeoBundle 'toyamarinyon/vim-swift'
+NeoBundle 'losingkeys/vim-niji'
 NeoBundle 'leafgarland/typescript-vim', {
 \ 'autoload' : {
 \   'filetypes' : ['typescript'] }
@@ -144,7 +141,7 @@ NeoBundle 'jason0x43/vim-js-indent', {
 \   'filetypes' : ['javascript', 'typescript', 'html'],
 \}}
 let g:js_indent_typescript = 1
-NeoBundle "othree/javascript-libraries-syntax.vim"
+NeoBundle 'othree/javascript-libraries-syntax.vim'
 autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
 NeoBundleLazy 'clausreinke/typescript-tools.vim', {
 \ 'build' : 'npm install -g',
@@ -152,7 +149,7 @@ NeoBundleLazy 'clausreinke/typescript-tools.vim', {
 \   'filetypes' : ['typescript'] }
 \}
 
-NeoBundle "vim-scripts/VOoM"
+NeoBundle 'vim-scripts/VOoM'
 
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
@@ -166,4 +163,4 @@ NeoBundle 'Shougo/vimproc.vim', {
 
 NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'ujihisa/neco-look'
-NeoBundle "rust-lang/rust.vim"
+NeoBundle 'rust-lang/rust.vim'
