@@ -1,1 +1,0 @@
-/Users/alphakai/dotfiles/zsh/.zsh
