@@ -2,7 +2,7 @@ if has('mac')
   set transparency=15
 else
   "Linux
-else
+endif
 
 set background=dark
 highlight CursorLine ctermbg=lightgray
