@@ -40,8 +40,12 @@ Configurations = {
   :myscripts => Proc.new do
     DCommands = {
       "amv" => "local",
-      "twitnotify" => "git@github.com:alphaKAI/twitnotify"
+      "cxz" => "local",
+      "xxz" => "local",
+      "twitnotify" => "git@github.com:alphaKAI/twitnotify",
+      "streamFilter" => "git@github.com:alphaKAI/streamFilter"
     }
+
     makeSymbolicLink("#{Dir.pwd}/myscripts/.myscripts", "#{ENV["HOME"]}/.myscripts")
     oldDir = Dir.pwd
     Dir.chdir("#{ENV["HOME"]}/.myscripts")

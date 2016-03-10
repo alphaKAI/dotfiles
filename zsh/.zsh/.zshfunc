@@ -8,4 +8,5 @@ function twitnotify(){ ~/.myscripts/twitnotify/twitnotify >/dev/null 2>&1 & }
 function amv(){ ~/.myscripts/amv/amv $@ }
 function cxz(){ ~/.myscripts/cxz/cxz $@ }
 function xxz(){ ~/.myscripts/xxz/xxz $@ }
+function streamFilter() { ~/.myscripts/streamFilter/streamfilter $@ }
 function conv2utf8(){ nkf -w --overwrite $1}
