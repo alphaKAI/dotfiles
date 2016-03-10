@@ -2,11 +2,10 @@ if [ -e $HOME/.zsh/.zshlocalfunc ]; then
   source $HOME/.zsh/.zshlocalfunc
 fi
 
-
 function ctwi(){  ~/.myscripts/ctwi/ctwi $@ }
 function ctl(){   ~/.myscripts/ctl/ctl $@ }
 function twitnotify(){ ~/.myscripts/twitnotify/twitnotify >/dev/null 2>&1 & }
 function amv(){ ~/.myscripts/amv/amv $@ }
+function cxz(){ ~/.myscripts/cxz/cxz $@ }
+function xxz(){ ~/.myscripts/xxz/xxz $@ }
 function conv2utf8(){ nkf -w --overwrite $1}
-
-
