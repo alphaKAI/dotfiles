@@ -8,6 +8,7 @@ path=(
   /usr/local/bin/
   $path
 )
+export path
 
 export XDG_CONFIG_HOME=~/.config
 
@@ -18,7 +19,6 @@ if [ -d "${PYENV_ROOT}" ]; then
 fi
 
 PATH=$PATH:$HOME/usr/bin:$HOME/usr/etc/:$HOME/usr/lib:$HOME/usr/include
-
 export EDITOR=vim
 alias cd..='cd ..'
 set bell-style visible
