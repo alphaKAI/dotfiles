@@ -9,7 +9,7 @@ void xxz(string fileName) {
   executeShell("tar -xf " ~ fileName);
   writeln("Decompress " ~ baseName(fileName, ".xz") ~ " into " ~ baseName(fileName, ".tar.xz") ~ " with xz");
   executeShell("xz -x" ~ baseName(fileName, ".xz"));
-  writeln("Remove tar package" ~ baseName(fileName, ".xz"));
+  writeln("Remove tar package " ~ baseName(fileName, ".xz"));
   executeShell("rm " ~ baseName(fileName, "xz"));
 }
 
