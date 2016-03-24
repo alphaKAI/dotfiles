@@ -6,6 +6,7 @@ path=(
   /opt/*/(s|)bin(N-/)
   /opt/*/(s|)lib(N-/)
   /usr/local/bin/
+  /usr/local/opt/*/bin
   $path
 )
 export path
