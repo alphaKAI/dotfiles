@@ -5,10 +5,13 @@ import std.process,
        std.path;
 
 void xxz(string fileName) {
+  enum CPU_CORE = 4;
+
   writeln("Extract tar package " ~ fileName ~ " into " ~ baseName(fileName, ".xz"));
   executeShell("tar -xf " ~ fileName);
   writeln("Decompress " ~ baseName(fileName, ".xz") ~ " into " ~ baseName(fileName, ".tar.xz") ~ " with xz");
-  executeShell("xz -x" ~ baseName(fileName, ".xz"));
+  //executeShell("xz -x" ~ baseName(fileName, ".xz"));
+  executeShell("xz --threads=" ~ CPU_CORE.to!string ~ "-x" ~ baseName(fileName, ".xz"));
   writeln("Remove tar package " ~ baseName(fileName, ".xz"));
   executeShell("rm " ~ baseName(fileName, "xz"));
 }
