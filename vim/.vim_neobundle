@@ -87,10 +87,13 @@ NeoBundle 'Shougo/neosnippet-snippets'
 
 NeoBundle 'kana/vim-filetype-haskell'
 NeoBundle 'ujihisa/neco-ghc'
-NeoBundle 'osyo-manga/vim-watchdogs'
+"NeoBundle "osyo-manga/shabadou.vim"
+"NeoBundle 'osyo-manga/vim-watchdogs'
+NeoBundle "jceb/vim-hier"
 NeoBundle 't9md/vim-foldtext'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'NigoroJr/rsense'
 NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
   \ 'insert' : 1,
   \ 'filetypes': 'ruby',
@@ -164,3 +167,8 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'rust-lang/rust.vim'
+
+NeoBundle 'derekwyatt/vim-scala'
+NeoBundle "sjl/badwolf"
+NeoBundle "airblade/vim-rooter"
+NeoBundle 'fsharp/fsharpbinding-vim'

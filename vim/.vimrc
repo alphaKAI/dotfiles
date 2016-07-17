@@ -84,6 +84,8 @@ set display=lastline
 
 " Filetypes
 autocmd BufRead,BufNewFile *.md set filetype=markdown
+au BufNewFile,BufRead *.scala setf scala
+
 
 "nobeep
 set visualbell t_vb=
@@ -210,6 +212,7 @@ let g:solarized_visibility  = 'normal'
 let g:solarized_termcolors  = 256
 
 colorscheme gruvbox
+"colorscheme badwolf
 "colorscheme twilight
 
 " pervious
@@ -246,6 +249,13 @@ augroup InsertHook
   autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
   autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
 augroup END
+
+" imporve color of vimdiff
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+
 "}}}
 
 " Plugin settings {{{
@@ -280,6 +290,10 @@ else
     endif
     let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
     let g:neocomplete#force_omni_input_patterns['default'] = '\h\w*'
+    let g:neocomplete#sources#dictionary#dictionaries = {
+          \ 'default' : '',
+          \ 'scala' : $HOME . '/.vim/dict/scala.dict',
+          \ }
   endfunction
 endif
 "}}}
@@ -315,14 +329,15 @@ let g:lightline = {
 
 
 " neocompleteと併用する場合の設定
-"if !exists("g:neocomplete#force_omni_input_patterns")
-"  let g:neocomplete#force_omni_input_patterns = {}
-"else
-"  let g:neocomplete#force_omni_input_patterns.d = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
-"endif
-"let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-"let g:neocomplete#sources#rsense#home_directory = '/usr/local/bin/rsense'
-"let g:rsenseHome = '/usr/local/Cellar/rsense/0.3/libexec'
+if !exists("g:neocomplete#force_omni_input_patterns")
+  let g:neocomplete#force_omni_input_patterns = {}
+else
+  let g:neocomplete#force_omni_input_patterns.d = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplete#sources#rsense#home_directory = '/usr/local/bin/rsense'
+let g:rsenseUseOmniFunc = 1
+let g:rsenseHome = '/usr/local/Cellar/rsense/0.3/libexec'
 
 " <F1>でドキュメントを開く
 autocmd FileType d nnoremap <buffer> <F1> :DUddoc<CR>
@@ -338,15 +353,27 @@ let g:openbrowser_open_rules = {'open' : 'open -a Safari {shellescape(uri)}&'}
 nnoremap[ :silent OpenBrowser %
 command! OpenBrowserCurrent execute "OpenBrowser" expand("%:p") 
 
+let g:quickrun_config = {}
 if executable("clang++")
   let g:syntastic_cpp_compiler = 'clang++'
   let g:syntastic_cpp_compiler_options = '--std=c++11 --stdlib=libc++'
-  let g:quickrun_config = {}
   let g:quickrun_config['cpp/clang++11'] = {
       \ 'cmdopt': '--std=c++11 --stdlib=libc++',
       \ 'type': 'cpp/clang++'
     \ }
   let g:quickrun_config['cpp'] = {'type': 'cpp/clang++11'}
+endif
+let g:syntastic_check_on_wq = 0
+
+
+"vim-rooter
+if ! empty(neobundle#get("vim-rooter"))
+  " Change only current window's directory
+  let g:rooter_use_lcd = 1
+  " files/directories for the root directory
+  let g:rooter_patterns = ['tags', '.git', '.git/', '_darcs/', '.hg/', '.bzr/', 'Makefile', 'GNUMakefile', 'GNUmakefile', '.svn/']
+  " Automatically change the directory
+  "autocmd! BufEnter *.c,*.cc,*.cxx,*.cpp,*.h,*.hh,*.java,*.py,*.sh,*.rb,*.html,*.css,*.js :Rooter
 endif
 "}}}
 
