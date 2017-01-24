@@ -43,7 +43,9 @@ Configurations = {
       "cxz" => "local",
       "xxz" => "local",
       "twitnotify" => "git@github.com:alphaKAI/twitnotify",
-      "streamFilter" => "git@github.com:alphaKAI/streamFilter"
+      "streamFilter" => "git@github.com:alphaKAI/streamFilter",
+      "doco" => "git@github.com:alphaKAI/doco",
+      "dww" => "git@github.com:alphaKAI/dww"
     }
 
     makeSymbolicLink("#{Dir.pwd}/myscripts/.myscripts", "#{ENV["HOME"]}/.myscripts")

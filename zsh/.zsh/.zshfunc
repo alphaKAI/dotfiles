@@ -4,14 +4,18 @@ fi
 
 function ctwi(){  ~/.myscripts/ctwi/ctwi $@ }
 function ctl(){   ~/.myscripts/ctl/ctl $@ }
-function twitnotify() {
-  local oldDir=$(pwd)
-  cd ~/.myscripts/twitnotify/
-  ~/.myscripts/twitnotify/twitnotify >/dev/null 2>&1 &
-  cd $oldDir
-}
+
+#function twitnotify() {
+#  local oldDir=$(pwd)
+#  cd ~/.myscripts/twitnotify/
+#  ~/.myscripts/twitnotify/twitnotify >/dev/null 2>&1 &
+#  cd $oldDir
+#}
 function amv(){ ~/.myscripts/amv/amv $@ }
 function cxz(){ ~/.myscripts/cxz/cxz $@ }
 function xxz(){ ~/.myscripts/xxz/xxz $@ }
 function streamFilter() { ~/.myscripts/streamFilter/streamfilter $@ }
 function conv2utf8(){ nkf -w --overwrite $1}
+alias doco="~/.myscripts/doco/doco"
+alias hexr="~/.myscripts/hexr/hexr"
+alias dww="~/.myscripts/dww/dww"
