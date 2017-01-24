@@ -13,11 +13,11 @@ export path
 
 export XDG_CONFIG_HOME=~/.config
 
-export PYENV_ROOT=$HOME/.pyenv
-if [ -d "${PYENV_ROOT}" ]; then
- export PATH=${PYENV_ROOT}/bin:$PATH
- eval "$(pyenv init -)"
-fi
+#export PYENV_ROOT=$HOME/.pyenv
+#if [ -d "${PYENV_ROOT}" ]; then
+# export PATH=${PYENV_ROOT}/bin:$PATH
+# eval "$(pyenv init -)"
+#fi
 
 PATH=$PATH:$HOME/usr/bin:$HOME/usr/etc/:$HOME/usr/lib:$HOME/usr/include
 export EDITOR=vim
