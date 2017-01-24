@@ -792,7 +792,8 @@ grmlcomp() {
 #     - zle-line-finish():    zle-rmkx
 
 # Use emacs-like key bindings by default:
-bindkey -e
+#bindkey -e
+bindkey -v
 
 # Custom widgets:
 
