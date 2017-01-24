@@ -67,6 +67,7 @@ set expandtab
 " Indent
 set autoindent
 set cindent
+set breakindent
 
 " Paste mode toggle
 set pastetoggle=<C-E>
@@ -375,6 +376,12 @@ if ! empty(neobundle#get("vim-rooter"))
   " Automatically change the directory
   "autocmd! BufEnter *.c,*.cc,*.cxx,*.cpp,*.h,*.hh,*.java,*.py,*.sh,*.rb,*.html,*.css,*.js :Rooter
 endif
+
+"let g:dutyl_stdImportPaths = ["/usr/local/include/d2/"]
+"call dutyl#register#tool('dcd-client','/opt/local/bin/dcd-client')
+"call dutyl#register#tool('dcd-server','/opt/local/bin/dcd-server')
+"let g:dutyl_dontHandleFormat = 1
+"let g:dutyl_dontHandleIndent = 1
 "}}}
 
 augroup BinaryXXD
