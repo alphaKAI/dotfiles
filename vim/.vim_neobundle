@@ -172,3 +172,5 @@ NeoBundle 'derekwyatt/vim-scala'
 NeoBundle "sjl/badwolf"
 NeoBundle "airblade/vim-rooter"
 NeoBundle 'fsharp/fsharpbinding-vim'
+
+"NeoBundle "idanarye/vim-dutyl"
