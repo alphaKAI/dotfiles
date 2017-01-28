@@ -42,24 +42,37 @@ Configurations = {
       "amv" => "local",
       "cxz" => "local",
       "xxz" => "local",
-      "twitnotify" => "git@github.com:alphaKAI/twitnotify",
+      "twitnotify"   => "git@github.com:alphaKAI/twitnotify",
       "streamFilter" => "git@github.com:alphaKAI/streamFilter",
-      "doco" => "git@github.com:alphaKAI/doco",
-      "dww" => "git@github.com:alphaKAI/dww"
+      "doco"         => "git@github.com:alphaKAI/doco",
+      "dww"          => "git@github.com:alphaKAI/dww"
     }
 
-    makeSymbolicLink("#{Dir.pwd}/myscripts/.myscripts", "#{ENV["HOME"]}/.myscripts")
+    unless File.exists? "#{Dir.pwd}/myscripts/.myscripts"
+      makeSymbolicLink("#{Dir.pwd}/myscripts/.myscripts", "#{ENV["HOME"]}/.myscripts")
+    end
     oldDir = Dir.pwd
     Dir.chdir("#{ENV["HOME"]}/.myscripts")
 
     DCommands.each do |key, value|
-      unless value == "local"
-        system("git clone #{value}")
+      puts "DCommand - #{key}"
+      if File.exists? "#{ENV["HOME"]}/.myscripts/#{key}"
+        unless value == "local"
+          _oldDir = Dir.pwd
+          Dir.chdir(key)
+          system("git pull")
+          system("dub build")
+          Dir.chdir(_oldDir)
+        end
+      else
+        unless value == "local"
+          system("git clone #{value}")
+        end
+        _oldDir = Dir.pwd
+        Dir.chdir(key)
+        system("dub build")
+        Dir.chdir(_oldDir)
       end
-      _oldDir = Dir.pwd
-      Dir.chdir(key)
-      system("dub build")
-      Dir.chdir(_oldDir)
     end
 
     Dir.chdir(oldDir)
