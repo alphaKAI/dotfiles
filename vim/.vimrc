@@ -158,6 +158,11 @@ nnoremap <C-u> :undo<CR>
 " NERDTree toggle : Ctrl + N + T
 nnoremap <C-n><C-t> :NERDTree<CR>
 
+" メモ系
+map <Leader>mn  :MemoNew<CR>
+map <Leader>ml  :MemoList<CR>
+map <Leader>mg  :MemoGrep<CR>
+
 "auto cd
 "au BufEnter *.* execute ":lcd " . expand("%:p:h")
 
@@ -377,6 +382,29 @@ if ! empty(neobundle#get("vim-rooter"))
   "autocmd! BufEnter *.c,*.cc,*.cxx,*.cpp,*.h,*.hh,*.java,*.py,*.sh,*.rb,*.html,*.css,*.js :Rooter
 endif
 
+" merlin
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
+let g:syntastic_ocaml_checkers = ['merlin']
+
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ocaml = '[^. *\t]\.\w*\|\h\w*|#'
+
+
+execute 'set rtp^=' . g:opamshare . '/ocp-indent/vim'
+function! s:ocaml_format()
+    let now_line = line('.')
+    exec ':%! ocp-indent'
+    exec ':' . now_line
+endfunction
+
+augroup ocaml_format
+    autocmd!
+    autocmd BufWrite,FileWritePre,FileAppendPre *.mli\= call s:ocaml_format()
+augroup END
 "let g:dutyl_stdImportPaths = ["/usr/local/include/d2/"]
 "call dutyl#register#tool('dcd-client','/opt/local/bin/dcd-client')
 "call dutyl#register#tool('dcd-server','/opt/local/bin/dcd-server')
@@ -384,12 +412,3 @@ endif
 "let g:dutyl_dontHandleIndent = 1
 "}}}
 
-augroup BinaryXXD
-  autocmd!
-  autocmd BufReadPre  *.bin let &binary =1
-  autocmd BufReadPost * if &binary | silent %!xxd -g 1
-  autocmd BufReadPost * set ft=xxd | endif
-  autocmd BufWritePre * if &binary | %!xxd -r | endif
-  autocmd BufWritePost * if &binary | silent %!xxd -g 1
-  autocmd BufWritePost * set nomod | endif
-augroup END

@@ -168,9 +168,8 @@ NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'rust-lang/rust.vim'
 
-NeoBundle 'derekwyatt/vim-scala'
 NeoBundle "sjl/badwolf"
 NeoBundle "airblade/vim-rooter"
-NeoBundle 'fsharp/fsharpbinding-vim'
 
-"NeoBundle "idanarye/vim-dutyl"
+NeoBundle 'glidenote/memolist.vim'
+NeoBundle 'def-lkb/ocp-indent-vim'
