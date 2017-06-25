@@ -3314,6 +3314,7 @@ zrclocal
 source ~/.zsh/.zshenv
 source ~/.zsh/.zshfunc
 source ~/.zsh/.zshcomp
+source ~/.zsh/.zshinit
 #TERM=xterm-256color
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4

@@ -1,0 +1,4 @@
+if [ -e $HOME/.zsh/.zshlocalinit ]; then
+  source $HOME/.zsh/.zshlocalinit
+fi
+
