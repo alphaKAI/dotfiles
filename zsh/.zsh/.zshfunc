@@ -19,3 +19,7 @@ function conv2utf8(){ nkf -w --overwrite $1}
 alias doco="~/.myscripts/doco/doco"
 alias hexr="~/.myscripts/hexr/hexr"
 alias dww="~/.myscripts/dww/dww"
+
+function extlines() {
+  find . -name "*.$1" | xargs wc -l | sort -n
+}
