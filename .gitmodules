@@ -1,0 +1,3 @@
+[submodule "myscripts/.myscripts"]
+	path = myscripts/.myscripts
+	url = git@github.com:alphaKAI/myscripts
