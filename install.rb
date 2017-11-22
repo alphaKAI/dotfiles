@@ -62,10 +62,10 @@ Configurations = {
       if File.exists? "#{ENV["HOME"]}/.myscripts/#{key}"
         _oldDir = Dir.pwd
         Dir.chdir(key)
-        system("git pull")
         unless value == "local"
-          system("dub build")
+          system("git pull")
         end
+        system("dub build")
         Dir.chdir(_oldDir)
       else
         unless value == "local"
