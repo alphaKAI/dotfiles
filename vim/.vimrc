@@ -180,6 +180,9 @@ let g:undotree_HighlightSyntax = "UnderLined"
 "Open TagList Toggle : Ctrl + k
 nnoremap <C-t><C-l> :Tlist<CR>
 
+" insert empty line in normal mode
+nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
+
 " Neosnippet {{{
 " Plugin key-mappings.
 " SuperTab like snippets behavior.
@@ -207,15 +210,6 @@ aug END
 " Color Setting {{{
 syntax enable
 set background=dark
-" solarized
-let g:solarized_degrade     = 0
-let g:solarized_bold        = 1
-let g:solarized_underline   = 1
-let g:solarized_italic      = 1
-let g:solarized_termtrans   = 0
-let g:solarized_contrast    = 'normal'
-let g:solarized_visibility  = 'normal'
-let g:solarized_termcolors  = 256
 
 colorscheme gruvbox
 "colorscheme badwolf
@@ -298,7 +292,6 @@ else
     let g:neocomplete#force_omni_input_patterns['default'] = '\h\w*'
     let g:neocomplete#sources#dictionary#dictionaries = {
           \ 'default' : '',
-          \ 'scala' : $HOME . '/.vim/dict/scala.dict',
           \ }
   endfunction
 endif
@@ -341,9 +334,6 @@ else
   let g:neocomplete#force_omni_input_patterns.d = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-let g:neocomplete#sources#rsense#home_directory = '/usr/local/bin/rsense'
-let g:rsenseUseOmniFunc = 1
-let g:rsenseHome = '/usr/local/Cellar/rsense/0.3/libexec'
 
 " <F1>でドキュメントを開く
 autocmd FileType d nnoremap <buffer> <F1> :DUddoc<CR>
@@ -405,10 +395,5 @@ augroup ocaml_format
     autocmd!
     autocmd BufWrite,FileWritePre,FileAppendPre *.mli\= call s:ocaml_format()
 augroup END
-"let g:dutyl_stdImportPaths = ["/usr/local/include/d2/"]
-"call dutyl#register#tool('dcd-client','/opt/local/bin/dcd-client')
-"call dutyl#register#tool('dcd-server','/opt/local/bin/dcd-server')
-"let g:dutyl_dontHandleFormat = 1
-"let g:dutyl_dontHandleIndent = 1
 "}}}
 

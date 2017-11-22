@@ -93,12 +93,6 @@ NeoBundle "jceb/vim-hier"
 NeoBundle 't9md/vim-foldtext'
 NeoBundle 't9md/vim-textmanip'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'NigoroJr/rsense'
-NeoBundleLazy 'supermomonga/neocomplete-rsense.vim', { 'autoload' : {
-  \ 'insert' : 1,
-  \ 'filetypes': 'ruby',
-\ }}
-
 
 " Comment out toggle
 NeoBundle 'tomtom/tcomment_vim'
@@ -132,25 +126,7 @@ NeoBundle 'dag/vim2hs'
 NeoBundle 'morhetz/gruvbox'
 
 NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'toyamarinyon/vim-swift'
 NeoBundle 'losingkeys/vim-niji'
-NeoBundle 'leafgarland/typescript-vim', {
-\ 'autoload' : {
-\   'filetypes' : ['typescript'] }
-\}
-NeoBundle 'jason0x43/vim-js-indent', {
-\ 'autoload' : {
-\   'filetypes' : ['javascript', 'typescript', 'html'],
-\}}
-let g:js_indent_typescript = 1
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-autocmd BufReadPre *.js let b:javascript_lib_use_jquery = 1
-NeoBundleLazy 'clausreinke/typescript-tools.vim', {
-\ 'build' : 'npm install -g',
-\ 'autoload' : {
-\   'filetypes' : ['typescript'] }
-\}
 
 NeoBundle 'vim-scripts/VOoM'
 
