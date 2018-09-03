@@ -50,6 +50,9 @@ Configurations = {
       "dww"          => "https://github.com/alphaKAI/dww"
     }
 
+    unless File.exists? "#{ENV["HOME"]}/.myscripts"
+      Dir.mkdir("#{ENV["HOME"]}/.myscripts")
+    end
     unless File.exists? "#{Dir.pwd}/myscripts/.myscripts"
       makeSymbolicLink("#{Dir.pwd}/myscripts/.myscripts", "#{ENV["HOME"]}/.myscripts")
     end
