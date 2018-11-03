@@ -38,17 +38,7 @@ Configurations = {
     makeSymbolicLink("#{Dir.pwd}/zsh/.zshrc", "#{ENV["HOME"]}/.zshrc")
   end,
   :myscripts => Proc.new do
-    system("git submodule update --init --recursive")
-
-    DCommands = {
-      "amv" => "local",
-      "cxz" => "local",
-      "xxz" => "local",
-      "twitnotify"   => "https://github.com/alphaKAI/twitnotify",
-      "streamFilter" => "https://github.com/alphaKAI/streamFilter",
-      "doco"         => "https://github.com/alphaKAI/doco",
-      "dww"          => "https://github.com/alphaKAI/dww"
-    }
+    system("git clone https://github.com/alphaKAI/myscripts --recursive ./myscripts/.myscripts")
 
     unless File.exists? "#{ENV["HOME"]}/.myscripts"
       Dir.mkdir("#{ENV["HOME"]}/.myscripts")
@@ -56,33 +46,10 @@ Configurations = {
     unless File.exists? "#{Dir.pwd}/myscripts/.myscripts"
       makeSymbolicLink("#{Dir.pwd}/myscripts/.myscripts", "#{ENV["HOME"]}/.myscripts")
     end
+
     oldDir = Dir.pwd
     Dir.chdir("#{ENV["HOME"]}/.myscripts")
-    system("git submodule update --init --recursive")
-
-    DCommands.each do |key, value|
-      puts "DCommand - #{key}"
-      if File.exists? "#{ENV["HOME"]}/.myscripts/#{key}"
-        _oldDir = Dir.pwd
-        Dir.chdir(key)
-        unless value == "local"
-          system("git pull")
-        end
-        system("dub build")
-        Dir.chdir(_oldDir)
-      else
-        unless value == "local"
-          system("git clone #{value}")
-          _oldDir = Dir.pwd
-          Dir.chdir(key)
-          system("dub build")
-          Dir.chdir(_oldDir)
-        else
-          puts "[Error] local - #{key} is not exists!"
-        end
-      end
-    end
-
+    system("rdmd build")
     Dir.chdir(oldDir)
   end
 }
