@@ -792,7 +792,6 @@ grmlcomp() {
 #     - zle-line-finish():    zle-rmkx
 
 # Use emacs-like key bindings by default:
-#bindkey -e
 bindkey -v
 
 # Custom widgets:
@@ -3313,11 +3312,14 @@ zrclocal
 
 source ~/.zsh/.zshenv
 source ~/.zsh/.zshfunc
+source ~/.zsh/.zshplugin
 source ~/.zsh/.zshcomp
-source ~/.zsh/.zshinit
+
 #TERM=xterm-256color
 ## END OF FILE #################################################################
 # vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4
 # Local variables:
 # mode: sh
 # End:
+
+

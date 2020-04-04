@@ -2,18 +2,7 @@ if [ -e $HOME/.zsh/.zshlocalenv ]; then
   source $HOME/.zsh/.zshlocalenv
 fi
 
-path=(
-  $path
-  /opt/*/(s|)bin(N-/)
-  /opt/*/(s|)lib(N-/)
-  /usr/local/bin/
-  /usr/local/opt/*/bin
-)
-export path
-
 export XDG_CONFIG_HOME=~/.config
-
-export PATH=$PATH:$HOME/usr/bin:$HOME/usr/etc/:$HOME/usr/lib:$HOME/usr/include
 
 export EDITOR=vim
 alias cd..='cd ..'
