@@ -1,8 +1,10 @@
 #encoding:utf-8
 
 def makeSymbolicLink(source, target)
-  puts "Make symbolic link #{source} -> #{target}"
-  system("ln -s #{source} #{target}")
+  unless File.exists? target
+    puts "Make symbolic link #{source} -> #{target}"
+    system("ln -s #{source} #{target}")
+  end
 end
 
 Components = [
@@ -38,19 +40,18 @@ Configurations = {
     makeSymbolicLink("#{Dir.pwd}/zsh/.zshrc", "#{ENV["HOME"]}/.zshrc")
   end,
   :myscripts => Proc.new do
-    system("git clone https://github.com/alphaKAI/myscripts --recursive ./myscripts/.myscripts")
+    MYSCRIPTS_HOST_DIR = "#{DIR.pwd}/myscripts/.myscripts"
+    MYSCRIPTS_TARGET_DIR = "#{ENV["HOME"]}/.myscripts"
 
-    unless File.exists? "#{ENV["HOME"]}/.myscripts"
-      Dir.mkdir("#{ENV["HOME"]}/.myscripts")
-    end
-    unless File.exists? "#{Dir.pwd}/myscripts/.myscripts"
-      makeSymbolicLink("#{Dir.pwd}/myscripts/.myscripts", "#{ENV["HOME"]}/.myscripts")
+    unless File.exists? MYSCRIPTS_HOST_DIR
+      system("git clone https://github.com/alphaKAI/myscripts --recursive #{MYSCRIPTS_HOST_DIR}")
     end
 
-    oldDir = Dir.pwd
-    Dir.chdir("#{ENV["HOME"]}/.myscripts")
-    system("rdmd build")
-    Dir.chdir(oldDir)
+    unless File.exists? MYSCRIPTS_TARGET_DIR
+      makeSymbolicLink(MYSCRIPTS_HOST_DIR, MYSCRIPTS_TARGET_DIR)
+    end
+
+    system("cd #{MYSCRIPTS_TARGET_DIR}; rdmd build")
   end
 }
 
