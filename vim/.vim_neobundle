@@ -7,14 +7,11 @@ NeoBundleLazy 'Shougo/neosnippet', {
 \ 'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
 \ }}
 
-NeoBundleLazy 'alpaca-tc/vim-endwise.git', {
-\ 'autoload' : {
-\ 'insert' : 1,
-\ }}
+"NeoBundleLazy 'alpaca-tc/vim-endwise.git', {
+"\ 'autoload' : {
+"\ 'insert' : 1,
+"\ }}
  
-NeoBundleLazy 'edsono/vim-matchit', { 'autoload' : {
-\ 'filetypes': 'ruby',
-\ 'mappings' : ['nx', '%'] }}
  
 NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 \ 'depends': 'Shougo/vimproc.vim',
@@ -61,74 +58,23 @@ NeoBundle 'vim-scripts/YankRing.vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'Shougo/vimfiler'
 
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'vim-scripts/twilight'
 NeoBundle 'vim-scripts/taglist.vim'
-NeoBundle 'vim-scripts/twilight256.vim'
 
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'Shougo/unite-outline'
-NeoBundle 'basyura/bitly.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'mbbill/undotree'
 NeoBundle 'troydm/easybuffer.vim'
 NeoBundle 'itchyny/lightline.vim'
 
-NeoBundle 'JavaScript-syntax'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tpope/vim-markdown'
 
 NeoBundle 'Shougo/neosnippet-snippets'
 
-NeoBundle 'kana/vim-filetype-haskell'
-NeoBundle 'ujihisa/neco-ghc'
 "NeoBundle "osyo-manga/shabadou.vim"
 "NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundle "jceb/vim-hier"
-NeoBundle 't9md/vim-foldtext'
-NeoBundle 't9md/vim-textmanip'
-NeoBundle 'honza/vim-snippets'
-
-" Comment out toggle
-NeoBundle 'tomtom/tcomment_vim'
 
 " Visualize indent
 NeoBundle 'nathanaelkane/vim-indent-guides'
-
-NeoBundle 'eagletmt/ghcmod-vim'
-
-NeoBundle 'supermomonga/jazzradio.vim', { 'depends' : [ 'Shougo/unite.vim' ] }
-if neobundle#tap('jazzradio.vim')
-  call neobundle#config({
-      \   'autoload' : {
-      \     'unite_sources' : [
-      \       'jazzradio'
-      \     ],
-      \     'commands' : [
-      \       'JazzradioUpdateChannels',
-      \       'JazzradioStop',
-      \       {
-      \         'name' : 'JazzradioPlay',
-      \         'complete' : 'customlist,jazzradio#channel_id_complete'
-      \       }
-      \     ],
-      \     'function_prefix' : 'jazzradio'
-      \   }
-      \ })
-endif
-
-NeoBundle 'dag/vim2hs'
-NeoBundle 'morhetz/gruvbox'
-
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'losingkeys/vim-niji'
-
-NeoBundle 'vim-scripts/VOoM'
 
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
@@ -143,9 +89,11 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'rust-lang/rust.vim'
-
-NeoBundle "sjl/badwolf"
 NeoBundle "airblade/vim-rooter"
-
-NeoBundle 'glidenote/memolist.vim'
 NeoBundle 'def-lkb/ocp-indent-vim'
+NeoBundle "morhetz/gruvbox"
+
+NeoBundle "autozimu/LanguageClient-neovim"
+NeoBundle "ionide/Ionide-vim"
+
+NeoBundle "itchyny/vim-gitbranch"

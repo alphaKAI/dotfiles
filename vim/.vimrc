@@ -36,7 +36,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " ClipBoard
-set clipboard+=unnamedplus,unnamed
+" for OSX: set clipboard+=unnamedplus,unnamed
+set clipboard=unnamedplus
 set nrformats-=octal
 set ambiwidth=double
 set wildmenu
@@ -312,20 +313,26 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets, ~/.vim
 "}}}
 
 " previm
-let g:previm_open_cmd = 'open -a Safari'
+let g:previm_open_cmd = 'xdg-open '
 
 let g:indent_guides_enable_on_vim_startup = 1
 
 " lightline.vim
 
 let g:lightline = {
-      \ 'component': {
-      \   'readonly': '%{&readonly?"\u2b64":""}',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
-      \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-      \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+      \ 'component': {
+      \   'readonly': '%{&readonly?"[ReadOnly] \ue0a2":""}'
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+      \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
       \ }
-
 
 " neocompleteと併用する場合の設定
 if !exists("g:neocomplete#force_omni_input_patterns")
