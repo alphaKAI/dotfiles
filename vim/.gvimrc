@@ -5,7 +5,9 @@ else
 endif
 
 set background=dark
-colorscheme badwolf
+colorscheme gruvbox
 highlight CursorLine ctermbg=lightgray
-let g:vimshell_editor_command = '/usr/local/Cellar/macvim/7.4-77/bin/gvim'
 
+set guioptions-=m
+set guioptions-=T
+set guifont=Source\ Code\ Pro\ Regular
