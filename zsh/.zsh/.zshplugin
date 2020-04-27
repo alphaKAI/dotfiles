@@ -1,0 +1,8 @@
+export ZPLUG_HOME=$HOME/.zsh/zplug
+source $ZPLUG_HOME/init.zsh
+
+if [ -e $HOME/.zsh/.zshlocalplugin ]; then
+  source $HOME/.zsh/.zshlocalplugin
+fi
+
+zplug load #--verbose

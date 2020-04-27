@@ -38,6 +38,10 @@ Configurations = {
   :zsh => Proc.new do
     makeSymbolicLink("#{Dir.pwd}/zsh/.zsh", "#{ENV["HOME"]}/.zsh")
     makeSymbolicLink("#{Dir.pwd}/zsh/.zshrc", "#{ENV["HOME"]}/.zshrc")
+
+    ZPLUG_HOME="#{ENV["HOME"]}/.zsh/zplug"
+    puts "Install Zplug"
+    system("git clone https://github.com/zplug/zplug #{ZPLUG_HOME}")
   end,
   :myscripts => Proc.new do
     MYSCRIPTS_HOST_DIR = "#{Dir.pwd}/myscripts/.myscripts"
