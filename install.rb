@@ -40,7 +40,7 @@ Configurations = {
     makeSymbolicLink("#{Dir.pwd}/zsh/.zshrc", "#{ENV["HOME"]}/.zshrc")
   end,
   :myscripts => Proc.new do
-    MYSCRIPTS_HOST_DIR = "#{DIR.pwd}/myscripts/.myscripts"
+    MYSCRIPTS_HOST_DIR = "#{Dir.pwd}/myscripts/.myscripts"
     MYSCRIPTS_TARGET_DIR = "#{ENV["HOME"]}/.myscripts"
 
     unless File.exists? MYSCRIPTS_HOST_DIR
