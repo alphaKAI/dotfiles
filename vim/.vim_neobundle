@@ -33,13 +33,11 @@ NeoBundle 'Shougo/neobundle.vim.git'
 NeoBundle 'scrooloose/nerdtree.git'
 NeoBundle 'scrooloose/syntastic.git'
 
-if has('nvim')
-  NeoBundleLazy 'Shougo/deoplete.nvim', {
+NeoBundle 'Shougo/deoplete.nvim', {
     \ 'autoload': {'insert': 1}}
-else
-  NeoBundleLazy 'Shougo/neocomplete.vim', {
-    \ 'autoload': {'insert': 1}}
-endif
+NeoBundleLazy 'roxma/nvim-yarp'
+NeoBundleLazy 'roxma/vim-hug-neovim-rpc'
+
 
 NeoBundleLazy 'Shougo/vimshell', {
 \ 'depends' : ['Shougo/unite.vim', 'Shougo/vimproc.vim'],
@@ -90,10 +88,12 @@ NeoBundle 'Quramy/tsuquyomi'
 NeoBundle 'ujihisa/neco-look'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle "airblade/vim-rooter"
-NeoBundle 'def-lkb/ocp-indent-vim'
+" NeoBundle 'def-lkb/ocp-indent-vim'
 NeoBundle "morhetz/gruvbox"
 
 NeoBundle "autozimu/LanguageClient-neovim"
 NeoBundle "ionide/Ionide-vim"
 
 NeoBundle "itchyny/vim-gitbranch"
+
+

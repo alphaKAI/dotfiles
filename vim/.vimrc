@@ -195,12 +195,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
       \: "\<TAB>"
 "}}}
 
-" Neocomplete {{{
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-"}}}
-
 "Scheme
 aug Scheme
   au!
@@ -271,40 +265,10 @@ let g:user_emmet_settings = {
 " Jump to the brackets to the corresponding : %
 " source $VIMRUNTIME/macros/matchit.vim
 
-if has('nvim')
-  let g:loaded_python_provider = 1
-  let g:python3_host_prog = expand('$HOME') . '/.pyenv/shims/python3'
-  let s:hooks = neobundle#get_hooks("deoplete.nvim")
-  function! s:hooks.on_source(bundle)
-    let g:deoplete#enable_at_startup = 1
-  endfunction
-else
-  " Neocomplete {{{
-  let s:hooks = neobundle#get_hooks("neocomplete.vim")
-  function! s:hooks.on_source(bundle)
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#max_list          = 20
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
-    let g:neocomplete#enable_smart_case = 1
-    if !exists('g:neocomplete#force_omni_input_patterns')
-      let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-    let g:neocomplete#force_omni_input_patterns['default'] = '\h\w*'
-    let g:neocomplete#sources#dictionary#dictionaries = {
-          \ 'default' : '',
-          \ }
-  endfunction
-endif
-"}}}
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,eruby setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+set completeopt=menuone
 
 " neosnippet {{{
 " Enable snipMate compatibility feature.
@@ -334,14 +298,6 @@ let g:lightline = {
       \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
       \ }
 
-" neocompleteと併用する場合の設定
-if !exists("g:neocomplete#force_omni_input_patterns")
-  let g:neocomplete#force_omni_input_patterns = {}
-else
-  let g:neocomplete#force_omni_input_patterns.d = '[^.[:digit:] *\t]\%(\.\|->\)\|::'
-endif
-let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
 " <F1>でドキュメントを開く
 autocmd FileType d nnoremap <buffer> <F1> :DUddoc<CR>
 " \dで定義元にジャンプ
@@ -359,9 +315,9 @@ command! OpenBrowserCurrent execute "OpenBrowser" expand("%:p")
 let g:quickrun_config = {}
 if executable("clang++")
   let g:syntastic_cpp_compiler = 'clang++'
-  let g:syntastic_cpp_compiler_options = '--std=c++11 --stdlib=libc++'
+  let g:syntastic_cpp_compiler_options = '--std=c++11'
   let g:quickrun_config['cpp/clang++11'] = {
-      \ 'cmdopt': '--std=c++11 --stdlib=libc++',
+      \ 'cmdopt': '--std=c++11',
       \ 'type': 'cpp/clang++'
     \ }
   let g:quickrun_config['cpp'] = {'type': 'cpp/clang++11'}
@@ -385,11 +341,6 @@ let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 let g:syntastic_ocaml_checkers = ['merlin']
 
-if !exists('g:neocomplete#force_omni_input_patterns')
-    let g:neocomplete#force_omni_input_patterns = {}
-endif
-let g:neocomplete#force_omni_input_patterns.ocaml = '[^. *\t]\.\w*\|\h\w*|#'
-
 
 execute 'set rtp^=' . g:opamshare . '/ocp-indent/vim'
 function! s:ocaml_format()
@@ -402,5 +353,18 @@ augroup ocaml_format
     autocmd!
     autocmd BufWrite,FileWritePre,FileAppendPre *.mli\= call s:ocaml_format()
 augroup END
+
+let g:LanguageClient_serverCommands = {
+    \ 'c': ['clangd', '-compile-commands-dir=' . getcwd() . '/build'],
+    \ 'cpp': ['clangd', '-compile-commands-dir=' . getcwd() . '/build'],
+    \ 'd': ['/home/alphakai/.local/share/code-d/bin/serve-d'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+" \ 'd': ['~/.dub/packages/.bin/dls-latest/dls'],
+let g:LanguageClient_rootMarkers = {
+    \ 'd': ['dub.json', 'dub.sdl'],
+    \ }
+
+
 "}}}
 
