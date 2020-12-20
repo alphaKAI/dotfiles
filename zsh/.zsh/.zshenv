@@ -6,7 +6,7 @@ export XDG_CONFIG_HOME=~/.config
 
 export EDITOR=vim
 alias cd..='cd ..'
-set bell-style visible
+setopt no_beep
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 alias make='make -j12'
 alias rzsh='source ~/.zshrc'
