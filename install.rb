@@ -10,7 +10,9 @@ end
 Components = [
   :vim,
   :zsh,
-  :myscripts
+  :myscripts,
+  :tmux,
+  :alacritty
 ]
 
 ALL = Components
@@ -56,6 +58,12 @@ Configurations = {
     end
 
     system("cd #{MYSCRIPTS_TARGET_DIR}; rdmd build")
+  end,
+  :tmux => Proc.new do
+    makeSymbolicLink("#{Dir.pwd}/tmux/.tmux.conf", "#{ENV["HOME"]}/.tmux.conf")
+  end,
+  :alacritty => Proc.new do
+    makeSymbolicLink("#{Dir.pwd}/alacritty", "#{ENV["HOME"]}/.config/alacritty")
   end
 }
 
